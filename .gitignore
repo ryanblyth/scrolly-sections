@@ -1,0 +1,40 @@
+# Node / package managers
+node_modules/
+
+# Build outputs (workspace-wide)
+dist/
+**/dist/
+.vite/
+**/.vite/
+.cache/
+**/.cache/
+
+# Logs
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Editors & OS
+.DS_Store
+.vscode/
+.idea/
+
+# Tests & coverage
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+
+# Monorepo (pnpm)
+.pnpm-store/
+
+# Misc
+*.local
+*.tmp
+*.zip
