@@ -1,0 +1,21 @@
+You are implementing a new section inside the scrolly-sections workspace.
+
+Use this spec template:
+- docs/specs/sections/SECTION_SPEC_TEMPLATE.md  (read carefully)
+- For Trail Scrub: docs/specs/sections/trail-scrub.md
+
+Goals:
+- Scaffold or update the package under packages/sections/<name>
+- Implement the Section API (createSection → mount/unmount/isMounted)
+- Ensure Vite builds ESM + IIFE and emits CSS asset
+- Add a minimal demo hook in apps/kitchen-sink
+
+Constraints:
+- TypeScript + SCSS per spec (namespaced classes)
+- Keep entry bundle light; heavy libs lazy by the orchestrator
+- Idempotent mount; clear errors on missing target
+
+Output:
+- File tree of created/updated files
+- Commands you ran (install, build, dev) and summaries of results
+- Which Acceptance Criteria from the spec are satisfied
