@@ -1,0 +1,22 @@
+{
+  "name": "scrolly-sections",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Spec-first library of a-la-carte scrollytelling sections (Vite + TypeScript + SCSS).",
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm -F apps/kitchen-sink dev",
+    "build": "pnpm -w -r run build",
+    "preview": "pnpm -F apps/kitchen-sink preview",
+    "typecheck": "tsc --noEmit -p .",
+    "test": "echo \"(add tests per package)\""
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "vite": "^5.2.0",
+    "sass": "^1.77.0"
+  }
+}
