@@ -34,6 +34,9 @@ test-results/
 # Monorepo (pnpm)
 .pnpm-store/
 
+# Local reference projects (not checked in)
+references/
+
 # Misc
 *.local
 *.tmp
