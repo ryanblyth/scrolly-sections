@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="module" src="/@vite/client"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trail Scrub Animation Demo</title>
+    <meta name="description" content="Highland Mary Trail scrub animation using Mapbox GL JS, GSAP ScrollTrigger, and Lenis">
+    
+    <!-- Mapbox GL JS CSS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.css" rel="stylesheet">
+    
+    <!-- Demo styles -->
+    <link rel="stylesheet" href="/src/styles/main.scss">
+</head>
+<body>
+    <!-- Header section -->
+    <header class="header">
+        <div class="container">
+            <h1>Highland Mary Trail</h1>
+            <p class="subtitle">Experience the trail as it draws itself through the Colorado wilderness</p>
+        </div>
+    </header>
+
+    <!-- Introduction section -->
+    <section class="intro">
+        <div class="container">
+            <h2>About the Trail</h2>
+            <p>The Highland Mary Trail is a stunning 5.3-mile hike through the San Juan Mountains of Colorado. 
+               This interactive experience lets you watch the trail reveal itself as you scroll, giving you a sense of 
+               the journey before you even set foot on the path.</p>
+            
+            <div class="trail-stats">
+                <div class="stat">
+                    <span class="stat-value">5.3</span>
+                    <span class="stat-label">Miles</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">1,476</span>
+                    <span class="stat-label">Feet Elevation</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">Moderate</span>
+                    <span class="stat-label">Difficulty</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pinned trail animation section -->
+    <section class="trail-section" id="trail-scrub" data-mapbox-token="pk.eyJ1IjoiaW5kZWxpYmUiLCJhIjoiY2xvM2k1Z25jMGZmbjJsbW9iMGV0M293cyJ9.UPel041iNYR3w_gq01-X8g">
+        <div class="container">
+            <div class="trail-header">
+                <h2>Trail Journey</h2>
+                <p>Scroll to watch the trail reveal itself</p>
+            </div>
+            
+            <!-- Map container -->
+            <div class="map-container">
+                <div id="trail-map" class="trail-map"></div>
+                
+                <!-- Progress indicator -->
+                <div class="progress-indicator">
+                    <span class="progress-label">Trail Progress:</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <span class="progress-text" id="progress-text">0%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trail details section -->
+    <section class="trail-details">
+        <div class="container">
+            <h2>Trail Highlights</h2>
+            
+            <div class="highlights">
+                <div class="highlight">
+                    <h3>Trailhead (0.0 mi)</h3>
+                    <p>Start your journey at the well-marked trailhead with parking and restroom facilities.</p>
+                </div>
+                
+                <div class="highlight">
+                    <h3>Meadow Viewpoint (1.3 mi)</h3>
+                    <p>Take in panoramic views of the surrounding valleys and distant peaks.</p>
+                </div>
+                
+                <div class="highlight">
+                    <h3>Alpine Lake (2.7 mi)</h3>
+                    <p>Rest beside this pristine mountain lake, perfect for a mid-hike break.</p>
+                </div>
+                
+                <div class="highlight">
+                    <h3>Summit Ridge (3.9 mi)</h3>
+                    <p>Reach the highest point with 360-degree views of the San Juan range.</p>
+                </div>
+                
+                <div class="highlight">
+                    <h3>Trail End (5.3 mi)</h3>
+                    <p>Complete your journey with a sense of accomplishment and memories to last a lifetime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Controls section -->
+    <section class="controls">
+        <div class="container">
+            <h2>Animation Controls</h2>
+            
+            <div class="control-group">
+                <label for="marker-toggle">Show Trail Marker:</label>
+                <input type="checkbox" id="marker-toggle" checked>
+            </div>
+            
+            <div class="control-group">
+                <label for="reduced-motion-toggle">Reduced Motion:</label>
+                <input type="checkbox" id="reduced-motion-toggle">
+            </div>
+            
+            <div class="control-group">
+                <button id="reset-animation" class="btn">Reset Animation</button>
+                <button id="jump-to-end" class="btn">Jump to End</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Trail Scrub Animation Demo. Built with Mapbox GL JS, GSAP ScrollTrigger, and Lenis.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

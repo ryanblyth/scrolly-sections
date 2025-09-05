@@ -1,0 +1,107 @@
+@import 'variables';
+
+// Trail Scrub Section Styles - Scoped to .scrolly-trail-scrub-*
+.scrolly-trail-scrub {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  &__map {
+    width: 100%;
+    height: 100vh;
+    border-radius: 8px;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-align: center;
+    z-index: 1000;
+    max-width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+  }
+
+  &__placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    text-align: center;
+    padding: 2rem;
+    border-radius: 8px;
+
+    h3 {
+      margin: 0 0 1rem 0;
+      color: #374151;
+      font-size: 1.5rem;
+    }
+
+    p {
+      margin: 0;
+      color: #6b7280;
+      font-size: 1rem;
+    }
+  }
+
+  // States
+  &--no-token {
+    background: #fef2f2;
+    border: 2px dashed #fca5a5;
+  }
+
+  &--static {
+    background: #f0f9ff;
+    border: 2px solid #93c5fd;
+  }
+
+  // Mapbox marker customization
+  .mapboxgl-marker {
+    z-index: 10;
+  }
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    min-height: 80vh;
+
+    &__map {
+      height: 80vh;
+    }
+
+    &__placeholder {
+      height: 80vh;
+      padding: 1rem;
+
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+    }
+
+    &__overlay {
+      padding: 0.75rem 1rem;
+      max-width: 95%;
+
+      p {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

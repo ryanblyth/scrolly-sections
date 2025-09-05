@@ -1,43 +1,89 @@
-# Node / package managers
+# Dependencies
 node_modules/
+.pnpm-store/
 
-# Build outputs (workspace-wide)
+# Build outputs (monorepo-safe)
 dist/
+build/
 **/dist/
+**/build/
+
+# Vite/Rollup caches
 .vite/
 **/.vite/
 .cache/
 **/.cache/
 
-# Logs
-npm-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-*.log
+# TypeScript
+*.tsbuildinfo
+**/*.tsbuildinfo
 
-# Environment files
+# Environment variables
 .env
 .env.*
 !.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Editors & OS
-.DS_Store
+# IDE
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# Tests & coverage
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local reference projects (keep out of repo)
+# (anchored to repo root)
+references/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage & test artifacts
 coverage/
+**/coverage/
+*.lcov
 .nyc_output/
 playwright-report/
 test-results/
 
-# Monorepo (pnpm)
-.pnpm-store/
+# Dependency directories
+jspm_packages/
 
-# Local reference projects (not checked in)
-references/
+# Optional caches
+.npm
+.eslintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+.parcel-cache
+.next
+.nuxt
 
-# Misc
-*.local
-*.tmp
+# Storybook build outputs
+.out
+.storybook-out
+
+# Temporary folders & local artifacts
+tmp/
+temp/
+*.tgz
 *.zip
+*.tmp
+*.local

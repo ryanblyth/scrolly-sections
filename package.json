@@ -9,9 +9,9 @@
   },
   "scripts": {
     "dev": "pnpm -F apps/kitchen-sink dev",
-    "build": "pnpm -w -r run build",
+    "build": "pnpm -r run build",
     "preview": "pnpm -F apps/kitchen-sink preview",
-    "typecheck": "tsc --noEmit -p .",
+    "typecheck": "pnpm -r run typecheck",
     "test": "echo \"(add tests per package)\""
   },
   "devDependencies": {
