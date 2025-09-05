@@ -25,6 +25,7 @@ class TrailScrubSection {
   private container: HTMLElement | null = null
   private map: any = null
   private scrollTrigger: any = null
+  private marker: any = null
   private isMountedFlag: boolean = false
   private cssInjected: boolean = false
   private options: SectionOptions | null = null
@@ -80,10 +81,13 @@ class TrailScrubSection {
       return // Idempotent
     }
 
-    if (this.scrollTrigger) {
-      this.scrollTrigger.kill()
-      this.scrollTrigger = null
-    }
+    // Kill all ScrollTriggers associated with this container
+    ScrollTrigger.getAll().forEach(trigger => {
+      if (trigger.trigger === this.container) {
+        trigger.kill()
+      }
+    })
+    this.scrollTrigger = null
 
     if (this.map) {
       this.map.remove()
@@ -309,13 +313,19 @@ class TrailScrubSection {
       .setLngLat(trail.geometry.coordinates[0])
       .addTo(this.map)
 
-    // Setup scroll trigger
-    this.scrollTrigger = gsap.to({ progress: 0 }, {
-      progress: 1,
-      duration: 1,
-      ease: 'none',
-      onUpdate: () => {
-        const progress = this.scrollTrigger.progress()
+    // Store marker reference for controls
+    this.marker = marker
+
+    // Bind to scroll with proper pinning behavior
+    ScrollTrigger.create({
+      trigger: this.container,
+      start: 'top top',
+      end: 'bottom top',
+      pin: true,
+      pinSpacing: true,
+      onUpdate: (self) => {
+        // Update trail progress based on scroll progress
+        const progress = self.progress
         
         // Update trail reveal
         this.map.setPaintProperty('trail-progress', 'line-opacity', progress)
@@ -333,32 +343,37 @@ class TrailScrubSection {
         if (progressText) {
           progressText.textContent = `${Math.round(progress * 100)}%`
         }
+      },
+      onEnter: () => {
+        // Add visual feedback when entering pinned section
+        this.container?.classList.add('trail-section-active')
+      },
+      onLeave: () => {
+        // Remove visual feedback when leaving pinned section
+        this.container?.classList.remove('trail-section-active')
+      },
+      onEnterBack: () => {
+        this.container?.classList.add('trail-section-active')
+      },
+      onLeaveBack: () => {
+        this.container?.classList.remove('trail-section-active')
       }
     })
 
-    // Bind to scroll
-    ScrollTrigger.create({
-      trigger: this.container,
-      start: 'top center',
-      end: 'bottom center',
-      animation: this.scrollTrigger,
-      scrub: 1
-    })
-
     // Setup control event listeners
-    this.setupControls(marker)
+    this.setupControls()
   }
 
-  private setupControls(marker: any): void {
+  private setupControls(): void {
     // Marker toggle
     const markerToggle = document.getElementById('marker-toggle') as HTMLInputElement
     if (markerToggle) {
       markerToggle.addEventListener('change', (e) => {
         const target = e.target as HTMLInputElement
         if (target.checked) {
-          marker.addTo(this.map)
+          this.marker?.addTo(this.map)
         } else {
-          marker.remove()
+          this.marker?.remove()
         }
       })
     }
@@ -381,17 +396,9 @@ class TrailScrubSection {
     const resetButton = document.getElementById('reset-animation')
     if (resetButton) {
       resetButton.addEventListener('click', () => {
-        if (this.scrollTrigger) {
-          this.scrollTrigger.progress(0)
-        }
-        // Update progress indicator
-        const progressFill = document.getElementById('progress-fill')
-        const progressText = document.getElementById('progress-text')
-        if (progressFill) {
-          progressFill.style.width = '0%'
-        }
-        if (progressText) {
-          progressText.textContent = '0%'
+        // Scroll to the beginning of the pinned section
+        if (this.container) {
+          this.container.scrollIntoView({ behavior: 'smooth' })
         }
       })
     }
@@ -400,17 +407,12 @@ class TrailScrubSection {
     const jumpToEndButton = document.getElementById('jump-to-end')
     if (jumpToEndButton) {
       jumpToEndButton.addEventListener('click', () => {
-        if (this.scrollTrigger) {
-          this.scrollTrigger.progress(1)
-        }
-        // Update progress indicator
-        const progressFill = document.getElementById('progress-fill')
-        const progressText = document.getElementById('progress-text')
-        if (progressFill) {
-          progressFill.style.width = '100%'
-        }
-        if (progressText) {
-          progressText.textContent = '100%'
+        // Scroll past the pinned section to the next section
+        if (this.container) {
+          const nextSection = this.container.nextElementSibling
+          if (nextSection) {
+            nextSection.scrollIntoView({ behavior: 'smooth' })
+          }
         }
       })
     }
