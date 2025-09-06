@@ -17,3 +17,6 @@ Apps demonstrate how to consume the scrolly-sections library in real-world scena
 - **Singles**: Shows focused development and testing of individual sections
 
 Each app spec defines behavior, performance budgets, and acceptance criteria for its specific use case.
+
+## Page recipes (Singles)
+- Trail Scrub → [singles/singles-trail-scrub.md](singles/singles-trail-scrub.md)

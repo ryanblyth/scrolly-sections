@@ -4,7 +4,10 @@ This directory contains all specifications for the scrolly-sections library and 
 
 ## Apps
 - [**Kitchen Sink**](apps/kitchen-sink.md) — Comprehensive "all sections together" page
-- [**Singles**](apps/singles.md) — Single-section pages app (one page per section, with intro & outro)
+- **Singles (one page per section)**
+  - App spec: [apps/singles.md](apps/singles.md)
+  - Page recipes:
+    - Trail Scrub → [apps/singles/singles-trail-scrub.md](apps/singles/singles-trail-scrub.md)
 
 ## Sections
 - [**Trail Scrub**](sections/trail-scrub.md) — Interactive trail animation with Mapbox GL JS

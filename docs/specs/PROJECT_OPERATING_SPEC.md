@@ -270,6 +270,15 @@ Create `apps/kitchen-sink/lighthouse-budgets.json`:
 
 ---
 
+### Spec locations (navigation)
+- App specs:
+  - `docs/specs/apps/kitchen-sink.md` — comprehensive "all sections" page
+  - `docs/specs/apps/singles.md` — singles app (one page per section)
+- Singles page recipes live under: `docs/specs/apps/singles/`
+  - Example: Trail Scrub → [apps/singles/singles-trail-scrub.md](apps/singles/singles-trail-scrub.md)
+
+---
+
 ## Appendix A — Glossary
 - **Section:** Self-contained scrollytelling component (JS + CSS + DOM contract).
 - **Kitchen-sink:** Demo app that mounts any combination of sections.

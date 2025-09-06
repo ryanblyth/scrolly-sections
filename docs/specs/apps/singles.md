@@ -37,3 +37,6 @@ pnpm -F apps/singles build
 
 ## 8) Change Log
 v0.1: Initial spec
+
+## Page recipes
+- Trail Scrub → [singles/singles-trail-scrub.md](singles/singles-trail-scrub.md)

@@ -2,6 +2,8 @@
 **Version:** 0.1 • **Owner:** @ryan • **Status:** Draft  
 **Package:** `@scrolly/trail-scrub`
 
+**Used by:** Singles page recipe → [apps/singles/singles-trail-scrub.md](../apps/singles/singles-trail-scrub.md)
+
 ## 1) Summary
 Scroll-scrubbed trail “draw” effect on a Mapbox map. As the reader scrolls, the trail reveals along its path; optionally a marker moves along the line.
 
