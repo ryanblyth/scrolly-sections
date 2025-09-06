@@ -138,14 +138,19 @@ Each section builds to:
 ---
 
 ## 8) Docs-First Workflow
-- **Specs** live under `docs/specs/sections/<name>.md` and `docs/specs/library/library.md`.
+- **Specs** live under `docs/specs/sections/<name>.md`, `docs/specs/apps/<name>.md`, and `docs/specs/library/library.md`.
 - **ADRs** (≤10 lines) in `docs/adrs/####-<slug>.md`.  
 - PRs must link relevant spec/ADR and tick acceptance boxes.
+- **Specs Index**: See `docs/specs/README.md` for navigation.
+
+**App specs:**
+- `docs/specs/apps/kitchen-sink.md` — specification for the comprehensive "all sections together" page
+- `docs/specs/apps/singles.md` — specification for the single-section pages app (one page per section, with intro & outro)
 
 **Acceptance**
 - **D1.** PR template requires links to spec/ADR and a checklist.  
 - **D2.** Merges blocked if no spec link for new features.  
-- **D3.** Weekly “spec drift” task (optional): diff contracts vs code.
+- **D3.** Weekly "spec drift" task (optional): diff contracts vs code.
 
 ---
 
